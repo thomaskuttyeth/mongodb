@@ -1,0 +1,23 @@
+
+
+// Data types 
+
+{
+    string: "String of text";
+    int: 342;
+    double: 3.2321;
+    boolean: true ; // false 
+    array:  [1,2,41];
+    object :{attr1:"attr1", attr2:"attr2"};
+    date: new Date("<YYYY-mm-dd>");
+    object_id: <ObjectId>;
+    no_value:null   
+}
+
+
+
+additional data types 
+timestaamp 
+binary data 
+regular expressions 
+js code 
