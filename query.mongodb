@@ -1,67 +1,69 @@
 
-# first query 
+show dbs; //  show databases availble 
+
+// first query 
 db.students.find({})
 
 
-# avoiding id field 
+ // avoiding id field 
 db.students.find({}, {_id:0}) 
 
-# limiting the results 
+// limiting the results 
 db.students.find({}, {_id:0}).limit(3)
 
 
-# soriting the results 
+// soriting the results 
 db.students.find({}, {_id:0}).sort({name:1})
 
 
 
-# soriting the results based on multiple values 
+// soriting the results based on multiple values 
 db.students.find({}, {_id:0}).sort({name:1, gpa :-1}) 
-# -1 representing the descending order 
+//  -1 representing the descending order 
 
 
-# finding students with Sociology major 
+// finding students with Sociology major 
 db.students.find({major :"Sociology"})
 
 
 
-# find all students who are mathematics or Sociology major 
+//find all students who are mathematics or Sociology major 
 db.students.find({$or: [{major:"mathematics"} , {major: "Sociology"}] })
 
 
 
 
-# finding students with gpa greater than gpa 9
+// finding students with gpa greater than gpa 9
 db.students.find(
     {gpa: {$gt :9 }},
     {_id:0}) 
 
 
 
-# finding students with gpa less than or equal to  gpa 7
+// finding students with gpa less than or equal to  gpa 7
 db.students.find(
     {gpa: {$lte :7}},
     {_id:0}).sort({gpa:-1})
 
 
 
-#  in operator 
+// in operator 
 db.students.find(
     {name: {$in : ["Kate", "thomas"]}}, 
     {_id:0})
 
-# there is also a $nin ( not in operator) 
+// there is also a $nin ( not in operator) 
 
 
-# finding students who has got some award field in 
+// finding students who has got some award field in 
 db.students.find(
     {awards:{$exists:true} }, 
     {_id:0}
 )
 
 
-# data type 
-# viewing the  string datatype student names 
+// data type 
+// viewing the  string datatype student names 
 db.students.find({name: {$type: 2}}, {_id:0}) 
 
 
@@ -71,13 +73,13 @@ db.students.find(
     {_id:0}
  )
 
-# returning objects with grades has an element mathches ( greaterthan 80) 
+// returning objects with grades has an element mathches ( greaterthan 80) 
 db.students.find(
     {grades:{$elemMatch:{$gte:31}}},
     {_id:0}
     )
 
-# quering the objects with array size  = 4 
+// quering the objects with array size  = 4 
 db.students.find(
     {grades:{$size:4}}, 
     {_id :0} 
