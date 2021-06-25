@@ -5,7 +5,7 @@ show dbs; //  show databases availble
 db.students.find({})
 
 
- // avoiding id field 
+ // viewing the enttire collection withour the id feature
 db.students.find({}, {_id:0}) 
 
 // limiting the results 
@@ -17,7 +17,7 @@ db.students.find({}, {_id:0}).sort({name:1})
 
 
 
-// soriting the results based on multiple values 
+// soriting the results based on multiple features 
 db.students.find({}, {_id:0}).sort({name:1, gpa :-1}) 
 //  -1 representing the descending order 
 
