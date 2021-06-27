@@ -1,0 +1,57 @@
+
+mongodb --  
+mongodb is a document-based No-SQL database. MOngodb stores all schema and records using a json- like syntax and makes use of collections and documents. 
+
+                    beginner 
+=============================================================
+    * creating new database with a collection 
+        mongo 
+        use newdb;
+        db.createCollection("my_collection");
+
+    * create a database user 
+
+    * list all the collections 
+
+    * insert a document in a collection 
+    * return all documents in a collection 
+    * find a single document by 1D 
+    * create an index to support queries 
+
+            intermediate : 
+            ======================
+    * Query for documents using multiple conditions ​- Querying for documents using operators and multiple conditions.
+    * 
+    * Update an existing document - ​Updating an existing document.
+    * 
+    * Perform an upsert for a document - ​Inserting a new record when attempting to update a non-existent record.
+    * 
+    * Remove a single field - Removing one or more fields from a single document.
+    * 
+    * Rename an existing field -​ Renaming an existing field in a given document.
+    * 
+    * Delete an existing document - ​Deleting a document from a collection.
+    * 
+    * Filter records using Regex - ​Retrieving data by matching a pattern.
+    * 
+    * Design a database schema based on user requirements​ - Designing a schema using best practices.
+
+
+
+                advanced 
+            ======================================
+
+    * Bulk insert multiple documents at once - Inserting multiple records at once in a collection.
+    * 
+    * Sort multiple documents - Sorting documents in ascending order.
+    * 
+    * Limit query results - ​Limiting the results of a query based on a given criteria using the limit() function.
+    * 
+    * Count documents - ​Counting the number of documents in a collection.
+    * 
+    * Iterate query results - ​Iterating over documents returned from a query.
+    * 
+    * Aggregate multiple documents - ​Grouping values from multiple documents together.
+
+
+
