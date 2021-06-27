@@ -1,0 +1,60 @@
+
+// showing the databases 
+show dbs;
+
+// changing the database 
+use mydb1 
+
+// getting the collection names 
+db.getCollectionNames() ; 
+
+// gettting the first document 
+db.restaurants.find({}).limit(1);
+
+// getting the first document in more readable format;
+db.restaurants.find({}).limit(1).pretty();
+
+// selecting a paritcular feature say(borough) with index ids 
+db.restaurants.find({}, {borough:1}).limit(5) ;
+
+// selecting the details of bourough feature of first five documents in restaurants collection without id s
+db.restaurants.find({},{borough:1, _id:0}).limit(5).pretty();
+
+
+// selecting cuisine and name of the restuarants 
+db.restaurants.find({}, {cuisine:1, name:1, _id:0}).limit(5) 
+
+
+// Write a MongoDB query to display the fields restaurant_id, name, borough and cuisine for all the documents in the collection restaurant.
+db.restaurants.find({},{restaurant_id:1, name:1, borough:1, cuisine:1}) 
+
+// Write a MongoDB query to display the fields restaurant_id, name, borough and cuisine, but exclude the field _id. 
+db.restaurants.find({}, {restuarant_id:1, name :1, borough:1, cuisine:1, _id : 0}); 
+
+
+// Write a MongoDB query to display all the restaurant which is in the borough Bronx. 
+db.restaurants.find({borough:"Bronx"}, {name:1, _id :0}); 
+
+// Write a MongoDB query to display the first 5 restaurant which is in the borough Bronx. 
+db.restaurants.find({borough:"Bronx"}, {name:1, _id:0}).limit(5); 
+
+
+// write a MongoDB query to display the next  5 restaurant by skipping the first five  which is in the borough bronx 
+db.restaurants.find({borough:"Bronx"}, {name:1,borough:1, _id :0}).skip(5).limit(5);
+
+//Write a MongoDB query to find the restaurants who achieved a score more than 90. 
+db.restaurants.find({grades:{$elemMatch:{"score":{$gt:90}}}}, {name:1, _id: 0});
+
+
+// Write a MongoDB query to find the restaurants that achieved a score, more than 80 but less than 100. 
+db.restaurants.find({grades : { $elemMatch:{"score":{$gt : 80 , $lt :100}}}});
+
+
+// Write a MongoDB query to find the restaurants which locate in latitude value less than -95.754168.
+db.restaurants.find({"address.coord.0" : {$lt : -95.754168}}, {name: 1, _id : 0})
+ 
+
+// get the data of the above problem but get the first element of the corrdinate ( this is an array so select the only the first element of the array 
+// and the name of the restaurant)
+db.restaurants.find({"address.coord.0" : {$lt : -95.754168}}, {name: 1, _id : 0,"address.coord":{$slice:1}});
+
