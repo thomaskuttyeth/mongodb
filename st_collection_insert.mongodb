@@ -1,9 +1,12 @@
-db.students.insertOne({
-    name:"thomas", 
-    major : "Data sciene", 
-    gpa : 9.12
-})
 
+
+
+db.students.insertOne({
+... name : "thomas", 
+... major : "Data science" , 
+... phone_number: 9562348638, 
+... gpa : 9.12
+... });
 
 
 db.students.insertOne({
@@ -13,10 +16,22 @@ db.students.insertOne({
     gpa : 9.49
 })
 
-
-
 db.students.insertOne({
-    _id : 3, 
+... _id : 3, 
+... name : 'Maria', 
+... gpa : 8.43, 
+... awards : ["hackathone", "basel jhons", "summa cum laude"], 
+... });
+
+
+db.students.insertOne({ id : 4, 
+ name : 'martin',  gpa : 9.45,  
+email : "marting23@gmail.com",  
+marks: [23,1,2,13,324,53] 
+});
+
+
+db.students.insertOne({ 
     name:"Antony", 
     major : "Analytics", 
     gpa : 8.49,
@@ -24,15 +39,14 @@ db.students.insertOne({
 })
 
 
+
 db.students.insertOne({
-    _id : 4, 
     name:"Kate", 
     major : "Sociology", 
     gpa : 8.49,
     contact :{phone:"9562348628", email:"kateste123@gmail.com"}, 
 
 })
-
 db.students.insertOne({
     name : "phill", 
     age :23, 
@@ -46,4 +60,6 @@ db.students.insertMany([
     {name:"able", major: "mathematics", gpa : 4.5}, 
     {name: "andrea", major : "Statistics", gpa : 8.9, contact : {email: "andreath@gmail.com"}}
 ])
+
+
 
