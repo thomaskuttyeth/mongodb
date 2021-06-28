@@ -1,0 +1,135 @@
+
+// all operator   // 
+// ================================================
+
+// fetch documents from the collection "testtable" where the value of "community_members"
+//  are 5000, 2000 and 1500 
+// is the value of "extra" of a json style object
+db.alldocuments.find(
+    {"extra.community_members": {$all : [5000,2000,1500]}}
+).pretty();
+// the above query will fetch all the documents where it contains all the values in the 
+// passes array 
+
+// elemMatch function  //
+// =========================================
+
+// fetching restaurants whose score is greater than 15 
+db.restaurants.find(
+    {grades: { $elemMatch:{"score" : {$gt : 15}}}}, 
+    {grades:1, _id:0}).limit(5);
+
+// passing two conditions in elemMatch 
+db.restaurants.find(
+    {grades: {$elemMatch:{"grade": "A", "score":{$gt:18}}}}, 
+    {grades:1, _id:0, name : 1}
+).count();
+
+// finding students who got exact 3 awards 
+db.students.find(
+    {awards:{$size:3}}  
+).pretty();
+e
+// fetching students who got more than 1 or greaterthan or equal to 2 award_size
+// ??????????
+
+ 
+
+// multiple sorting 
+db.students.find({},{name:1, gpa:1, _id : 0}).sort({gpa:1, name :-1}); 
+
+// single sorting 
+db.students.find({}, {name:1, gpa:1, _id : 0}).sort({gpa:1})  ; // gpa ascending 
+
+
+
+
+// fetching all the students except those with gpa 8.49 
+db.students.find({gpa: {$ne : 8.49}}, {name :1, gpa: 1, _id : 0}); 
+
+
+// fetching all the students whose gpa is in [ 4.5, 8.49] 
+db.students.find({gpa : {$in :[4.5, 8.49]}}, { name : 1, gpa : 1,_id :0 });
+
+
+// find all the student names whose gap is not in [4.5 , 8,49]
+db.students.find(
+    {gpa: {$nin:[4.5, 8.49]}}, 
+    {name : 1, gpa : 1, _id: 0} 
+    );
+
+// find students who recived awards 
+db.students.find(
+    {awards: {$exists : true}}, 
+    {name : 1 , awards: 1, _id : 0}
+    ); 
+
+// returning all the names , gpa  of the students whose gpa is float or double
+db.students.find(
+    {gpa: {$type :1}}, 
+    {name: 1 , gpa : 1, _id :0}
+);
+
+// find all the name of the restaurant 
+// where  there is greater than 15 score match and borough " Bakery"
+ db.restaurants.find(
+     {$and : 
+          [
+              {"grades": {$elemMatch:{"score":{$gt : 16}}}}, 
+              {"cuisine" : "Bakery"}
+          ]
+     }, 
+     {name : 1, _id : 0, cuisine : 1, grades : 1}
+ ).limit(5).pretty();
+
+
+
+// fetch all the restaurant names  where cuisine is "Bakery" or borough : "Bronx" 
+db.restaurants.find(
+    {$or: [
+        {"cuisine" : "Bakery"}, 
+        {"borough": 'Bronx'}
+    ]}
+    ).count() ;
+
+
+// fetch all the restaurant names where cuisine is not "Bakery"
+db.students.find(
+    {gpa: {$not :{$gt : 9}}},
+    {name :1, _id : 0, gpa : 1}
+); 
+
+
+
+db.students.find({
+    $nor : [
+        {gpa : {$gt : 9}}, 
+        {gpa : {$lt : 7}}
+    ]
+}, {name : 1, gpa : 1 , _id : 0}) ; 
+
+
+
+// major functions used 
+//////////////////////////////////////////////////////////////
+// functions used 
+// all 
+// sort 
+// gt ( greater than )
+// lt  ( less than)
+// gte // lte ( or equal to)
+// pretty();
+// size 
+// elemMatch ; 
+// count() ; 
+// limit(); 
+// ne  ( not equal to )
+// in 
+// nin 
+// exists
+// type 
+// and 
+// or 
+// not 
+// nor 
+
